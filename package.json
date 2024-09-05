@@ -1,0 +1,21 @@
+{
+        "name": "monorepo",
+        "version": "0.1.0",
+        "scripts": {
+                "install": "npm install concurrently",
+                "build": "npm run build --workspace frontend",
+                "start": "concurrently \"npm run start --workspace backend\" \"npm run preview --workspace frontend\""
+        },
+        "dependencies": {
+                "concurrently": "^7.6.0"
+        },
+        "workspaces": [
+                "frontend",
+                "backend"
+        ],
+        "main": "index.js",
+        "devDependencies": {},
+        "author": "",
+        "license": "ISC",
+        "description": ""
+}
