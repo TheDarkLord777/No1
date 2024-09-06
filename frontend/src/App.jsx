@@ -6,7 +6,7 @@ function App() {
 const [data,setData]=useState(null)
 
 useEffect(()=>{
-  fetch("https://no1-1.onrender.com/api").then(response=>response.json()).then(response=>setData(response.message))
+  fetch(`${process.env.REACT_APP_API_URL}/api`).then(response=>response.json()).then(response=>setData(response.message))
 },[])
 
   return (
