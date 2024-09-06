@@ -4,7 +4,7 @@ const cors = require('cors');
 const app=express()
 
 app.use(cors({
-    origin: '*'  
+    origin: 'https://no1-chi.vercel.app'  
   }));
 
 app.listen(PORT,()=>{console.log(`Server starting on ${PORT}`)})

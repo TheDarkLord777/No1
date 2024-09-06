@@ -1,32 +1,34 @@
 import { useEffect, useState } from "react";
+import axios from 'axios';
 import Header from "./components/Header/Header.jsx";
 
-
 function App() {
-const [data,setData]=useState(null)
-const API_URL = import.meta.env.VITE_API_URL
-console.log(API_URL)
+  const [data, setData] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
 
-useEffect(() => {
-  fetch(`${API_URL}/api`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+  useEffect(() => {
+    axios.get(`${API_URL}/api`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
       }
-      return response.json();
     })
-    .then(data => setData(data.message))
-    .catch(error => console.error('There was a problem with the fetch operation:', error));
-}, []);
+      .then(response => {
+        console.log('Full response:', response); // Log the entire response object
+        setData(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error making the request:', error);
+      });
+  }, []);
 
   return (
     <div className="container">
-  <Header/>
-    <div className="inside">
-      <div>{data ? data : "Loading.."}</div>
+      <Header />
+      <div className="inside">
+        <div>{data ? data : "Loading.."}</div>
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default App
+export default App;
