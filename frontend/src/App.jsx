@@ -14,13 +14,19 @@ function App() {
     })
       .then(response => {
         console.log('Full response:', response); // Log the entire response object
-        setData(response.data);
+        if (response.data && response.data.message) {
+          setData(response.data.message);
+        } else {
+          console.error('Unexpected response format:', response.data);
+          setData('Error: Unexpected response format');
+        }
       })
       .catch(error => {
         console.error('There was an error making the request:', error);
+        setData('Error: Unable to fetch data');
       });
   }, []);
-
+  
   return (
     <div className="container">
       <Header />
