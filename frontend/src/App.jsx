@@ -53,8 +53,8 @@ function App() {
   return (
     <Container >
       <Header />
-      <Inside $background={myMedia}>
-        <div>{data ? data : "Loading.."}</div>
+      <Inside>
+      
         </Inside>
       </Container>
   );
@@ -70,7 +70,7 @@ height: calc(100vh - 20px);
 `;
 const Inside = styled.div`
   flex-grow: 1;
-  background: url(${({ $background }) => $background || "https://hi-techmedia.ru/assets/template/img/icon_marketplaces.png"}) no-repeat;
+  background: url("https://hi-techmedia.ru/assets/template/img/icon_marketplaces.png") no-repeat;
   background-position: center;
   background-size: contain;
 `;
