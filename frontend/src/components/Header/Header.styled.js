@@ -11,4 +11,5 @@ export const HeaderStyled=styled.header`
 export const Text=styled.p`
 font-weight: bold;
     color: white;
+    cursor:pointer;
 `
