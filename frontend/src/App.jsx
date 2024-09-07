@@ -54,7 +54,7 @@ function App() {
     <Container >
       <Header />
       <Inside>
-      <video src={myMedia} width={"100%"} height={"100%"}></video>
+      <video src={myMedia} width={"100%"} height={"100%"} loop autoPlay></video>
         </Inside>
       </Container>
   );
