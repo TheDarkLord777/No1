@@ -54,7 +54,9 @@ function App() {
     <Container >
       <Header />
       <Inside>
-      <video src={myMedia} width={"100%"} height={"100%"} loop autoPlay></video>
+      <video src={myMedia} width="100%" height="100%" loop autoPlay controls>
+      Your browser does not support the video tag.
+      </video>
         </Inside>
       </Container>
   );
