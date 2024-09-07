@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Header from "./components/Header/Header.jsx";
 import "./i18n/config.js"
+import styled from "styled-components";
 
 function App() {
   const [data, setData] = useState(null);
@@ -9,7 +10,6 @@ function App() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    // Ma'lumotni olish
     axios.get(`${API_URL}/api`, {
       headers: {
         'ngrok-skip-browser-warning': 'true'
@@ -51,14 +51,28 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
+    <Container >
       <Header />
-      <div className="inside">
+      <Inside $background={myMedia}>
         <div>{data ? data : "Loading.."}</div>
-        {myMedia && <video controls src={myMedia} />} {/* Video faylni ko'rsatish */}
-      </div>
-    </div>
+        </Inside>
+      </Container>
   );
 }
+
+const Container=styled.div`
+height: calc(100vh - 20px);
+    width: calc(100% - 20px);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+`;
+const Inside = styled.div`
+  flex-grow: 1;
+  background: url(${({ $background }) => $background || "https://hi-techmedia.ru/assets/template/img/icon_marketplaces.png"}) no-repeat;
+  background-position: center;
+  background-size: contain;
+`;
 
 export default App;

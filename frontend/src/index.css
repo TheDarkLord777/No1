@@ -13,17 +13,4 @@
     margin: 0;
     padding: 0;
 }
-.container{
-    height: calc(100vh - 20px);
-    width: calc(100% - 20px);
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-.inside{
-flex-grow: 1;
-background: url("https://hi-techmedia.ru/assets/template/img/icon_marketplaces.png") no-repeat;
-background-position: center;
-background-size: contain;
-}
+

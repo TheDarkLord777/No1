@@ -27,7 +27,7 @@ app.get("/api", (req, res) => {
 // Media URL qaytarish marshruti
 app.get("/api/media", (req, res) => {
   // Faylni to'g'ri URL bilan qaytarish
-  const mediaUrl = `${req.protocol}://${req.get("host")}/assets/1.mp4`;
+  const mediaUrl = `https://${req.get("host")}/assets/1.mp4`;
   res.json({
     url: mediaUrl
   });
