@@ -4,6 +4,10 @@
       "language": "Рус/Узб",
       "loginRegister": "Войти/Регистрация",
       "settings": "Настройки"
-    }
+    },
+  "content": {
+    "sale": "Скидка",
+    "saleValue": "50%"
+  }
   }
   

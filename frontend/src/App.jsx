@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from "./components/Header/Header.jsx";
 import "./i18n/config.js"
 import styled from "styled-components";
+import Content from "./components/Content/Content.jsx";
 
 function App() {
   const [data, setData] = useState(null);
@@ -41,9 +42,7 @@ function App() {
     <Container >
       <Header />
       <Inside>
-      {/* <video src={myMedia} width="100%" height="100%" loop autoPlay controls>
-      Your browser does not support the video tag.
-      </video> */}
+      <Content/>
         </Inside>
       </Container>
   );

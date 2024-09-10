@@ -4,6 +4,10 @@
       "language": "Uz/Ru",
       "loginRegister": "Kirish/Registratsiya",
       "settings": "Sozlamalar"
-    }
+    },
+  "content": {
+    "sale": "Chegirma",
+    "saleValue": "50%"
+  }
   }
   
