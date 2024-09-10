@@ -64,7 +64,7 @@ height: calc(100vh - 20px);
 `;
 const Inside = styled.div`
   flex-grow: 1;
-  background: url("assets/background.gif") no-repeat;
+  background: url("src/assets/background.gif") no-repeat;
   background-position: center;
   background-size: cover;
 `;
