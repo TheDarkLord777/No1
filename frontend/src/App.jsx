@@ -9,54 +9,41 @@ function App() {
   const [myMedia, setMyMedia] = useState(null);
   const API_URL = import.meta.env.VITE_API_URL;
 
+  const api = axios.create({
+    baseURL: `${API_URL}/api`,
+    headers: { 'ngrok-skip-browser-warning': 'true' }
+  });
+  
   useEffect(() => {
-    axios.get(`${API_URL}/api`, {
-      headers: {
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
+    api.get('')
       .then(response => {
-        console.log('Full response:', response); // Log the entire response object
-        if (response.data && response.data.message) {
-          setData(response.data.message);
-        } else {
-          console.error('Unexpected response format:', response.data);
-          setData('Error: Unexpected response format');
-        }
+        console.log('Full response:', response);
+        setData(response.data?.message || 'Unexpected response format');
       })
       .catch(error => {
-        console.error('There was an error making the request:', error);
+        console.error('Error fetching data:', error);
         setData('Error: Unable to fetch data');
       });
-
-    // Media faylni olish
-    axios.get(`${API_URL}/api/media`, {
-      headers: {
-        'ngrok-skip-browser-warning': 'true'
-      }
-    })
+  
+    api.get('/media')
       .then(response => {
-        console.log('Media response:', response); // Log the media response
-        if (response.data && response.data.url) {
-          setMyMedia(response.data.url);
-        } else {
-          console.error('Unexpected media response format:', response.data);
-          setMyMedia('Error: Unexpected media response format');
-        }
+        console.log('Media response:', response);
+        setMyMedia(response.data?.url || 'Unexpected media response format');
       })
       .catch(error => {
-        console.error('There was an error making the media request:', error);
+        console.error('Error fetching media:', error);
         setMyMedia('Error: Unable to fetch media');
       });
   }, []);
+  
 
   return (
     <Container >
       <Header />
       <Inside>
-      <video src={myMedia} width="100%" height="100%" loop autoPlay controls>
+      {/* <video src={myMedia} width="100%" height="100%" loop autoPlay controls>
       Your browser does not support the video tag.
-      </video>
+      </video> */}
         </Inside>
       </Container>
   );
@@ -69,12 +56,17 @@ height: calc(100vh - 20px);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 768px) {
+      height: calc(100vh - 10px);
+      width: calc(100% - 10px);
+    }
 `;
 const Inside = styled.div`
   flex-grow: 1;
-  background: url("https://hi-techmedia.ru/assets/template/img/icon_marketplaces.png") no-repeat;
+  background: url("assets/background.gif") no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
 `;
 
 export default App;

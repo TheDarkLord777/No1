@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 80;
 const app = express();
 
 // Statik fayllar uchun to'g'ri yo'lni ko'rsatamiz
@@ -27,7 +27,7 @@ app.get("/api", (req, res) => {
 // Media URL qaytarish marshruti
 app.get("/api/media", (req, res) => {
   // Faylni to'g'ri URL bilan qaytarish
-  const mediaUrl = `https://${req.get("host")}/assets/1.mp4`;
+  const mediaUrl = `http://${req.get("host")}/assets/1.mp4`;
   res.json({
     url: mediaUrl
   });
