@@ -63,6 +63,7 @@ const BigText = styled.div`
         background: red;
         transform: translateX(-50%);
         animation: ${orbAnimation} 2s infinite;
+        animation-timing-function: ease-in-out;
       
         
     }
