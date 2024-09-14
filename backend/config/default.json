@@ -1,0 +1,5 @@
+{
+    "port":"5000",
+    "jwtSecret":"TheDarkLord777",
+    "mongoURL":"mongodb+srv://muzaffarovmahmudbek:Abaddon11@cluster0.azxfk.mongodb.net/app?retryWrites=true&w=majority&appName=Cluster0"
+}

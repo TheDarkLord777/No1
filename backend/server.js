@@ -2,20 +2,41 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
-const PORT = process.env.PORT || 80;
+const config=require("config")
+const mongoose=require("mongoose")
+const PORT = config.get("port") || 5000;
 const app = express();
 
-// Statik fayllar uchun to'g'ri yo'lni ko'rsatamiz
-app.use("/assets", express.static("assets"));
 
 // CORS sozlamalari
 app.use(cors({
   origin: 'https://no1-chi.vercel.app'  
 }));
 
-app.listen(PORT, () => {
-  console.log(`Server starting on ${PORT}`);
-});
+
+
+async function start(){
+  try{
+    await mongoose.connect(config.get("mongoURL"))
+    console.log("MongoDB connected");
+    app.listen(PORT, () => {
+      console.log(`Server starting on ${PORT}`);
+    });
+  }
+  catch (e){
+    console.log("Server Error",e.message)
+    process.exit(1)
+
+  }
+}
+start()
+// Statik fayllar uchun to'g'ri yo'lni ko'rsatamiz
+app.use("/assets", express.static("assets"));
+app.use("/api/auth",require("./routes/auth.routes"))
+
+
+
+
 
 // Oddiy API marshruti
 app.get("/api", (req, res) => {
